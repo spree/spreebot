@@ -7,6 +7,12 @@ describe 'Spreebot' do
     Sinatra::Application
   end
 
+  context "fail" do
+    it "blows up" do
+      fail
+    end
+  end
+
   context 'POST /issue' do
     pending 'should remove unauthorized labels'
 
