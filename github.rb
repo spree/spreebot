@@ -2,7 +2,7 @@ require 'octokit'
 
 class Github
 
-  VALID_LABELS = %w(unverified verified failing works_for_me steps version expected_behavior feature_request solved stalled)
+  VALID_LABELS = %w(unverified verified failing works_for_me steps version expected_behavior feature_request solved stalled reopened)
   CORE_USERS = %w(schof jdutil huoxito peterberkenbosch rlister)
 
   CI_FAILED_LABEL = 'failing'
@@ -73,5 +73,14 @@ class Github
   def reopen_succesfull_pull(repo, pull_request_id)
     client.update_pull_request(repo, pull_request_id, nil, nil, PR_OPEN_STATE)
     client.remove_label(repo, issue_id, CI_FAILED_LABEL)
+  end
+
+  # Label an existing issue using the specified text
+  #
+  # @param repo [String] The repository in "user/repo" format. ie 'spree/spree'
+  # @param issue [Integer] The issue number on that repository
+  # @param label [String] The label to be applied to the issue
+  def label_issue(repo, issue, label)
+    client.add_labels_to_an_issue(repo, issue, [label])
   end
 end

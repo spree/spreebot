@@ -45,6 +45,11 @@ class Spreebot < Sinatra::Base
       end
     end
 
+    if event == 'issues'
+      # label the issue if it has been reopened
+      @gh.label_issue(repo_name, issue_number, 'reopened')
+    end
+
     "OK\n"
   end
 end
