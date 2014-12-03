@@ -14,7 +14,6 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     json (1.8.1)
-    kgio (2.9.2)
     method_source (0.8.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -39,7 +38,6 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    raindrops (0.13.0)
     rspec (3.0.0)
       rspec-core (~> 3.0.0)
       rspec-expectations (~> 3.0.0)
@@ -65,10 +63,6 @@ GEM
       eventmachine (~> 1.0)
       rack (~> 1.0)
     tilt (1.4.1)
-    unicorn (4.8.3)
-      kgio (~> 2.6)
-      rack
-      raindrops (~> 0.7)
 
 PLATFORMS
   ruby
@@ -82,4 +76,3 @@ DEPENDENCIES
   rspec
   sinatra
   thin
-  unicorn

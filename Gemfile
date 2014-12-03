@@ -5,11 +5,11 @@ ruby '2.1.2'
 gem 'sinatra'
 gem 'httparty'
 gem 'activesupport'
+gem 'thin'
 
 gem 'octokit', '~> 3.6.1'
 
 group :development do
-  gem 'thin'
 end
 
 group :development, :test do
@@ -19,5 +19,4 @@ group :development, :test do
 end
 
 group :production do
-  gem 'unicorn'
 end
