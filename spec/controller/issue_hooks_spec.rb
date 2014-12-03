@@ -18,5 +18,9 @@ describe 'Spreebot' do
       true # fake test
     end
 
+    it 'should not fail' do
+      raise 'but it does!'
+    end
+
   end
 end
