@@ -33,4 +33,19 @@ class Github
     client.add_labels_to_an_issue(repo, issue, ['unverified'])
   end
 
+
+  # Closes an issue when comment is done by a user in the [CORE_USERS] and applies
+  # the passed in label when it's in the [VALID_LABELS]
+  #
+  # @param repo [String] The repository in "user/repo" format. ie 'spree/spree'
+  # @param issue [Integer] The issue number on that repository
+  # @param login [String] The login name for the user that commented
+  # @param label [String] The label to be applied to the issue
+  #
+  def close_and_label_issue(repo, issue, login, label)
+    if CORE_USERS.include?(login) && VALID_LABELS.include?(label)
+      client.add_labels_to_an_issue(repo, issue, [label])
+      client.close_issue(repo, issue)
+    end
+  end
 end
