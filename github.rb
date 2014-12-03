@@ -52,4 +52,26 @@ class Github
       client.close_issue(repo, issue)
     end
   end
+
+  # Reject a PR that is failing on the CI server
+  # adds the label "failing" to the PR and closes it.
+  #
+  # @param repo [String] The repository in "user/repo" format. ie 'spree/spree'
+  # @param pull_request_id [Integer] The pullrequest number on that repository
+  #
+  def reject_failing_pull(repo, pull_request_id)
+    client.close_pull_request(repo, pull_request_id)
+    client.add_labels_to_an_issue(repo, pull_request_id, [CI_FAILED_LABEL])
+  end
+
+  # Reopens a PR that was closed before when it failed on the CI server.
+  # removes the label 'failing' as well.
+  #
+  # @param repo [String] The repository in "user/repo" format. ie 'spree/spree'
+  # @param pull_request_id [Integer] The pullrequest number on that repository
+  #
+  def reopen_succesfull_pull(repo, pull_request_id)
+    client.update_pull_request(repo, pull_request_id, nil, nil, PR_OPEN_STATE)
+    client.remove_label(repo, issue_id, CI_FAILED_LABEL)
+  end
 end
