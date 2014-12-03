@@ -20,7 +20,7 @@ class Spreebot < Sinatra::Base
     repo_name = repo['full_name']
     action = payload['action']
     issue = payload['issue']
-    issue_number = issue['number']
+    issue_number = issue['number'] if issue
 
     if issue
       # remove any unofficial labels
