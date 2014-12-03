@@ -11,7 +11,7 @@ class Spreebot < Sinatra::Base
   #   @payload = JSON.parse(request.body.read).with_indifferent_access
   # end
 
-  post "/" do
+  post "/github" do
     "OK\n"
   end
 end
