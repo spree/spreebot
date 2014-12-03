@@ -3,7 +3,7 @@ require 'octokit'
 class Github
 
   VALID_LABELS = %w(unverified)
-  CORE_USERS = %w(schof, jdutil, huoxito, peterberkenbosch)
+  CORE_USERS = %w(schof jdutil huoxito peterberkenbosch)
 
   def client
     @github_client ||= Octokit::Client.new(:access_token => ENV["GITHUB_TOKEN"])
