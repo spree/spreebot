@@ -80,7 +80,16 @@ class Github
   # @param repo [String] The repository in "user/repo" format. ie 'spree/spree'
   # @param issue [Integer] The issue number on that repository
   # @param label [String] The label to be applied to the issue
-  def label_issue(repo, issue, label)
+  def create_issue_label(repo, issue, label)
     client.add_labels_to_an_issue(repo, issue, [label])
+  end
+
+  # Removes a label from the specified issue
+  #
+  # @param repo [String] The repository in "user/repo" format. ie 'spree/spree'
+  # @param issue [Integer] The issue number on that repository
+  # @param label [String] The label to be removed from the issue
+  def remove_issue_label(repo, issue, label)
+    client.remove_label(repo, issue, label)
   end
 end
