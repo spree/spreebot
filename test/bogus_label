@@ -1,5 +1,6 @@
-curl -X POST -d '{
-  "action": "opened",
+curl -X POST -d '
+{
+  "action": "labeled",
   "issue": {
     "url": "https://api.github.com/repos/spree/spreebot/issues/1",
     "labels_url": "https://api.github.com/repos/spree/spreebot/issues/1/labels{/name}",
@@ -29,7 +30,11 @@ curl -X POST -d '{
       "site_admin": false
     },
     "labels": [
-
+      {
+        "url": "https://api.github.com/repos/spree/spreebot/labels/help+wanted",
+        "name": "help wanted",
+        "color": "159818"
+      }
     ],
     "state": "open",
     "locked": false,
@@ -37,9 +42,14 @@ curl -X POST -d '{
     "milestone": null,
     "comments": 0,
     "created_at": "2014-12-03T16:35:41Z",
-    "updated_at": "2014-12-03T16:35:41Z",
+    "updated_at": "2014-12-03T16:49:54Z",
     "closed_at": null,
     "body": "Here is a test issue description"
+  },
+  "label": {
+    "url": "https://api.github.com/repos/spree/spreebot/labels/help+wanted",
+    "name": "help wanted",
+    "color": "159818"
   },
   "repository": {
     "id": 27491183,
@@ -105,8 +115,8 @@ curl -X POST -d '{
     "labels_url": "https://api.github.com/repos/spree/spreebot/labels{/name}",
     "releases_url": "https://api.github.com/repos/spree/spreebot/releases{/id}",
     "created_at": "2014-12-03T14:35:19Z",
-    "updated_at": "2014-12-03T16:34:21Z",
-    "pushed_at": "2014-12-03T16:34:21Z",
+    "updated_at": "2014-12-03T16:41:11Z",
+    "pushed_at": "2014-12-03T16:41:11Z",
     "git_url": "git://github.com/spree/spreebot.git",
     "ssh_url": "git@github.com:spree/spreebot.git",
     "clone_url": "https://github.com/spree/spreebot.git",
