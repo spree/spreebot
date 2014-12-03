@@ -12,6 +12,8 @@ end
 
 group :development, :test do
   gem 'pry-meta'
+  gem 'rspec'
+  gem 'rack-test'
 end
 
 group :production do
