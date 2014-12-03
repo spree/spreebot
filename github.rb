@@ -5,6 +5,10 @@ class Github
   VALID_LABELS = %w(unverified verified failing works_for_me steps version expected_behavior feature_request solved stalled)
   CORE_USERS = %w(schof jdutil huoxito peterberkenbosch)
 
+  CI_FAILED_LABEL = 'failing'
+  PR_OPEN_STATE = 'open'
+  UNVERIFIED_ISSUE_LABEL = 'unverified'
+
   def client
     @github_client ||= Octokit::Client.new(:access_token => ENV["GITHUB_TOKEN"])
   end
@@ -30,7 +34,7 @@ class Github
   # @param issue_id [Integer] The issue number on that repository
   #
   def mark_issue_unverified(repo, issue_id)
-    client.add_labels_to_an_issue(repo, issue_id, ['unverified'])
+    client.add_labels_to_an_issue(repo, issue_id, [UNVERIFIED_ISSUE_LABEL])
   end
 
 
