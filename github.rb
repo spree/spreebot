@@ -90,6 +90,12 @@ class Github
   # @param issue [Integer] The issue number on that repository
   # @param label [String] The label to be removed from the issue
   def remove_issue_label(repo, issue, label)
+    # GH will create an event for removing the label, even if it doesn't exist
+    # so we should check for that first
+    return if client.labels_for_issue(repo, issue).select do |l|
+      l[:name] == label
+    end.empty?
+
     client.remove_label(repo, issue, label)
   end
 end
