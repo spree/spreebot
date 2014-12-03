@@ -13,5 +13,10 @@ describe 'Spreebot' do
     context 'for a new issue' do
       pending 'should add the unverified label'
     end
+
+    it 'should pass' do
+      true # fake test
+    end
+
   end
 end
