@@ -6,6 +6,8 @@ gem 'sinatra'
 gem 'httparty'
 gem 'active_support'
 
+gem 'octokit', '~> 3.6.1'
+
 group :development do
   gem 'thin'
 end
