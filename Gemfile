@@ -4,7 +4,7 @@ ruby '2.0.0'
 
 gem 'sinatra'
 gem 'httparty'
-gem 'active_support'
+gem 'activesupport'
 
 gem 'octokit', '~> 3.6.1'
 
