@@ -18,5 +18,9 @@ describe 'Spreebot' do
       true # fake test
     end
 
+    it 'should not fail' do
+      raise 'intentional failure'
+    end
+
   end
 end
