@@ -17,7 +17,7 @@ class Github
   def remove_invalid_labels(repo, issue)
     labels = client.labels_for_issue(repo, issue)
     labels.each do |label|
-      unless VALID_LABELS.include?(label.name) do
+      unless VALID_LABELS.include?(label.name)
         client.remove_label(repo, 1, label.name)
         client.delete_label!(repo, label.name)
       end
