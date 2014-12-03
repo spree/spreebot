@@ -20,4 +20,14 @@ class Github
       client.remove_label(repo, 1, label.name) unless valid_labels.include?(label.name)
     end
   end
+
+  # Add the label 'unverified' to the specified issue
+  #
+  # @param [String, repo] The repository in "user/repo" format. ie 'spree/spree'
+  # @param [Integer, issue] The issue number on that repository
+  #
+  def mark_issue_unverified(repo, issue)
+    client.add_labels_to_an_issue(repo, issue, ['unverified'])
+  end
+
 end
