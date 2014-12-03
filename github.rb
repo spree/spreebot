@@ -12,13 +12,13 @@ class Github
   # Removes all invalid labels from the issue
   #
   # @param repo [String] The repository in "user/repo" format. ie 'spree/spree'
-  # @param issue [Integer] The issue number on that repository
+  # @param issue_id [Integer] The issue number on that repository
   #
-  def remove_invalid_labels(repo, issue)
-    labels = client.labels_for_issue(repo, issue)
+  def remove_invalid_labels(repo, issue_id)
+    labels = client.labels_for_issue(repo, issue_id)
     labels.each do |label|
       unless VALID_LABELS.include?(label.name)
-        client.remove_label(repo, 1, label.name)
+        client.remove_label(repo, issue_id, label.name)
         client.delete_label!(repo, label.name)
       end
     end
