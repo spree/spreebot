@@ -27,10 +27,10 @@ class Github
   # Add the label 'unverified' to the specified issue
   #
   # @param repo [String] The repository in "user/repo" format. ie 'spree/spree'
-  # @param issue [Integer] The issue number on that repository
+  # @param issue_id [Integer] The issue number on that repository
   #
-  def mark_issue_unverified(repo, issue)
-    client.add_labels_to_an_issue(repo, issue, ['unverified'])
+  def mark_issue_unverified(repo, issue_id)
+    client.add_labels_to_an_issue(repo, issue_id, ['unverified'])
   end
 
 
