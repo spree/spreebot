@@ -11,8 +11,8 @@ class Github
 
   # Removes all invalid labels from the issue
   #
-  # @param [String, repo] The repository in "user/repo" format. ie 'spree/spree'
-  # @param [Integer, issue] The issue number on that repository
+  # @param repo [String] The repository in "user/repo" format. ie 'spree/spree'
+  # @param issue [Integer] The issue number on that repository
   #
   def remove_invalid_labels(repo, issue)
     labels = client.labels_for_issue(repo, issue)
@@ -23,8 +23,8 @@ class Github
 
   # Add the label 'unverified' to the specified issue
   #
-  # @param [String, repo] The repository in "user/repo" format. ie 'spree/spree'
-  # @param [Integer, issue] The issue number on that repository
+  # @param repo [String] The repository in "user/repo" format. ie 'spree/spree'
+  # @param issue [Integer] The issue number on that repository
   #
   def mark_issue_unverified(repo, issue)
     client.add_labels_to_an_issue(repo, issue, ['unverified'])
