@@ -38,10 +38,12 @@ class Spreebot < Sinatra::Base
       comment_body = payload['comment']['body'].downcase
       comment_user = payload['comment']['user']['login']
 
-      # check for special comments
+      # check for rejection comments
       if comment_body.start_with?('reject:')
         label = comment_body.gsub('reject:', '').strip
         @gh.close_and_label_issue(repo_name, issue_number, comment_user, label)
+        # remove unverified label if rejection reason is works_for_me
+        @gh_remove_issue_label(repo_name, issue_number, 'unverified') if label == 'works_for_me'
       end
     end
 
