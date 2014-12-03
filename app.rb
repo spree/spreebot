@@ -25,6 +25,9 @@ class Spreebot < Sinatra::Base
     if issue
       # remove any unofficial labels
       @gh.remove_invalid_labels(repo_name, issue_number)
+
+      # add the unverified label if it's a new issue
+      @gh.mark_issue_unverified(repo_name, issue_number) if action == 'opened'
     end
 
     "OK\n"
