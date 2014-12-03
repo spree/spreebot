@@ -21,6 +21,10 @@ class Spreebot < Sinatra::Base
     action = payload['action']
     issue = payload['issue']
     issue_number = issue['number'] if issue
+    context = payload['context']
+    commit = payload['commit']
+    description = payload['description']
+    event = env['HTTP_X_GITHUB_EVENT']
 
     if issue
       # remove any unofficial labels
@@ -28,6 +32,17 @@ class Spreebot < Sinatra::Base
 
       # add the unverified label if it's a new issue
       @gh.mark_issue_unverified(repo_name, issue_number) if action == 'opened'
+    end
+
+    if event == 'issue_comment' and action == 'created'
+      comment_body = payload['comment']['body'].downcase
+      comment_user = payload['comment']['user']['login']
+
+      # check for special comments
+      if comment_body.start_with?('reject:')
+        label = comment_body.gsub('reject:', '').strip
+        @gh.close_and_label_issue(repo_name, issue_number, comment_user, label)
+      end
     end
 
     "OK\n"
