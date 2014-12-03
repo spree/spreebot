@@ -2,7 +2,7 @@ require 'octokit'
 
 class Github
 
-  VALID_LABELS = %w(unverified)
+  VALID_LABELS = %w(unverified, verified, failing, works_for_me, steps, version, expected_behavior, feature_request, solved, stalled)
   CORE_USERS = %w(schof jdutil huoxito peterberkenbosch)
 
   def client
