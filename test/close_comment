@@ -2,14 +2,14 @@ curl -X POST --header "X-Github-Event: issue_comment" -d '
 {
   "action": "created",
   "issue": {
-    "url": "https://api.github.com/repos/spree/spreebot/issues/5",
-    "labels_url": "https://api.github.com/repos/spree/spreebot/issues/5/labels{/name}",
-    "comments_url": "https://api.github.com/repos/spree/spreebot/issues/5/comments",
-    "events_url": "https://api.github.com/repos/spree/spreebot/issues/5/events",
-    "html_url": "https://github.com/spree/spreebot/pull/5",
-    "id": 50882106,
-    "number": 5,
-    "title": "Failing PR",
+    "url": "https://api.github.com/repos/spree/spreebot/issues/9",
+    "labels_url": "https://api.github.com/repos/spree/spreebot/issues/9/labels{/name}",
+    "comments_url": "https://api.github.com/repos/spree/spreebot/issues/9/comments",
+    "events_url": "https://api.github.com/repos/spree/spreebot/issues/9/events",
+    "html_url": "https://github.com/spree/spreebot/issues/9",
+    "id": 50915369,
+    "number": 9,
+    "title": "Test issue for verification",
     "user": {
       "login": "schof",
       "id": 85518,
@@ -30,29 +30,27 @@ curl -X POST --header "X-Github-Event: issue_comment" -d '
       "site_admin": false
     },
     "labels": [
-
+      {
+        "url": "https://api.github.com/repos/spree/spreebot/labels/verified",
+        "name": "verified",
+        "color": "009800"
+      }
     ],
     "state": "open",
     "locked": false,
     "assignee": null,
     "milestone": null,
-    "comments": 1,
-    "created_at": "2014-12-03T19:38:18Z",
-    "updated_at": "2014-12-03T19:50:12Z",
+    "comments": 3,
+    "created_at": "2014-12-04T00:59:06Z",
+    "updated_at": "2014-12-04T01:32:19Z",
     "closed_at": null,
-    "pull_request": {
-      "url": "https://api.github.com/repos/spree/spreebot/pulls/5",
-      "html_url": "https://github.com/spree/spreebot/pull/5",
-      "diff_url": "https://github.com/spree/spreebot/pull/5.diff",
-      "patch_url": "https://github.com/spree/spreebot/pull/5.patch"
-    },
-    "body": "Guys you should take this awesome PR!"
+    "body": "Will try to verify this one through comments ..."
   },
   "comment": {
-    "url": "https://api.github.com/repos/spree/spreebot/issues/comments/65476184",
-    "html_url": "https://github.com/spree/spreebot/pull/5#issuecomment-65476184",
-    "issue_url": "https://api.github.com/repos/spree/spreebot/issues/5",
-    "id": 65476184,
+    "url": "https://api.github.com/repos/spree/spreebot/issues/comments/65523902",
+    "html_url": "https://github.com/spree/spreebot/issues/9#issuecomment-65523902",
+    "issue_url": "https://api.github.com/repos/spree/spreebot/issues/9",
+    "id": 65523902,
     "user": {
       "login": "schof",
       "id": 85518,
@@ -72,9 +70,9 @@ curl -X POST --header "X-Github-Event: issue_comment" -d '
       "type": "User",
       "site_admin": false
     },
-    "created_at": "2014-12-03T19:50:12Z",
-    "updated_at": "2014-12-03T19:50:12Z",
-    "body": "reject:steps"
+    "created_at": "2014-12-04T01:32:19Z",
+    "updated_at": "2014-12-04T01:32:19Z",
+    "body": "close:works_for_me"
   },
   "repository": {
     "id": 27491183,
@@ -140,14 +138,14 @@ curl -X POST --header "X-Github-Event: issue_comment" -d '
     "labels_url": "https://api.github.com/repos/spree/spreebot/labels{/name}",
     "releases_url": "https://api.github.com/repos/spree/spreebot/releases{/id}",
     "created_at": "2014-12-03T14:35:19Z",
-    "updated_at": "2014-12-03T19:48:47Z",
-    "pushed_at": "2014-12-03T19:48:47Z",
+    "updated_at": "2014-12-04T01:07:21Z",
+    "pushed_at": "2014-12-04T01:07:20Z",
     "git_url": "git://github.com/spree/spreebot.git",
     "ssh_url": "git@github.com:spree/spreebot.git",
     "clone_url": "https://github.com/spree/spreebot.git",
     "svn_url": "https://github.com/spree/spreebot",
     "homepage": null,
-    "size": 0,
+    "size": 336,
     "stargazers_count": 0,
     "watchers_count": 0,
     "language": "Shell",
@@ -157,9 +155,9 @@ curl -X POST --header "X-Github-Event: issue_comment" -d '
     "has_pages": false,
     "forks_count": 1,
     "mirror_url": null,
-    "open_issues_count": 3,
+    "open_issues_count": 1,
     "forks": 1,
-    "open_issues": 3,
+    "open_issues": 1,
     "watchers": 0,
     "default_branch": "master"
   },
@@ -192,4 +190,5 @@ curl -X POST --header "X-Github-Event: issue_comment" -d '
     "type": "User",
     "site_admin": false
   }
-}' localhost:9292/github
+}
+' localhost:9292/github

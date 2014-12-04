@@ -42,7 +42,6 @@ class Spreebot < Sinatra::Base
       if comment_body.start_with?('reject:')
         label = comment_body.gsub('reject:', '').strip
         @gh.close_and_label_issue(repo_name, issue_number, comment_user, label)
-        @gh.remove_issue_label(repo_name, issue_number, 'unverified') if label == 'works_for_me'
       end
 
       # check for triage comments
@@ -52,6 +51,12 @@ class Spreebot < Sinatra::Base
         @gh.remove_issue_label(repo_name, issue_number, 'unverified') if label == 'verified'
       end
 
+      # check for close comments
+      if comment_body.start_with?('close:')
+        label = comment_body.gsub('close:', '').strip
+        @gh.close_and_label_issue(repo_name, issue_number, comment_user, label)
+        @gh.remove_issue_label(repo_name, issue_number, 'unverified')
+      end
     end
 
     if event == 'issues'
