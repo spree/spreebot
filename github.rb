@@ -74,6 +74,7 @@ class Github
     if CORE_USERS.include?(login) && label_is_valid?(label)
       client.add_labels_to_an_issue(repo, issue_id, [label])
       client.close_issue(repo, issue_id)
+      add_comment_to_issue(repo, issue_id, label) if EXPLANATION_LABELS.include?(label)
     end
   end
 
@@ -121,5 +122,17 @@ class Github
     end.empty?
 
     client.remove_label(repo, issue, label)
+  end
+
+  # Add a comment to the issue if an entry exists in the explanations hash
+  # with the value in that hash to explain the closing reason better.
+  #
+  # @param repo [String] The repository in "user/repo" format. ie 'spree/spree'
+  # @param issue_id [Integer] The issue number on that repository
+  # @param label [String] The label to be removed from the issue
+  def add_comment_to_issue(repo, issue_id, label)
+    if explanations.has_key?(label.to_sym)
+      client.add_comment(repo, issue_id, explanations[label.to_sym])
+    end
   end
 end
