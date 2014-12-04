@@ -66,14 +66,14 @@ class Github
   # the passed in label when it's in the [VALID_LABELS]
   #
   # @param repo [String] The repository in "user/repo" format. ie 'spree/spree'
-  # @param issue [Integer] The issue number on that repository
+  # @param issue_id [Integer] The issue number on that repository
   # @param login [String] The login name for the user that commented
   # @param label [String] The label to be applied to the issue
   #
-  def close_and_label_issue(repo, issue, login, label)
+  def close_and_label_issue(repo, issue_id, login, label)
     if CORE_USERS.include?(login) && label_is_valid?(label)
-      client.add_labels_to_an_issue(repo, issue, [label])
-      client.close_issue(repo, issue)
+      client.add_labels_to_an_issue(repo, issue_id, [label])
+      client.close_issue(repo, issue_id)
     end
   end
 
@@ -102,21 +102,21 @@ class Github
   # Label an existing issue using the specified text
   #
   # @param repo [String] The repository in "user/repo" format. ie 'spree/spree'
-  # @param issue [Integer] The issue number on that repository
+  # @param issue_id [Integer] The issue number on that repository
   # @param label [String] The label to be applied to the issue
-  def create_issue_label(repo, issue, label)
-    client.add_labels_to_an_issue(repo, issue, [label])
+  def create_issue_label(repo, issue_id, label)
+    client.add_labels_to_an_issue(repo, issue_id, [label])
   end
 
   # Removes a label from the specified issue
   #
   # @param repo [String] The repository in "user/repo" format. ie 'spree/spree'
-  # @param issue [Integer] The issue number on that repository
+  # @param issue_id [Integer] The issue number on that repository
   # @param label [String] The label to be removed from the issue
-  def remove_issue_label(repo, issue, label)
+  def remove_issue_label(repo, issue_id, label)
     # GH will create an event for removing the label, even if it doesn't exist
     # so we should check for that first
-    return if client.labels_for_issue(repo, issue).select do |l|
+    return if client.labels_for_issue(repo, issue_id).select do |l|
       l[:name] == label
     end.empty?
 
