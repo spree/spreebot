@@ -2,8 +2,9 @@ require 'octokit'
 
 class Github
 
-  VALID_LABELS = %w(unverified verified failing works_for_me steps version expected_behavior feature_request stalled reopened not_a_bug)
+  VALID_LABELS = %w(unverified verified failing reopened)
   CORE_USERS = %w(schof jdutil huoxito peterberkenbosch rlister)
+  EXPLANATION_LABELS = %w(expected_behavior feature_request not_a_bug stalled steps version works_for_me)
 
   CI_FAILED_LABEL = 'failing'
   PR_OPEN_STATE = 'open'
@@ -13,6 +14,29 @@ class Github
     @github_client ||= Octokit::Client.new(:access_token => ENV["GITHUB_TOKEN"])
   end
 
+  def label_is_valid?(label)
+    valid_labels = VALID_LABELS + EXPLANATION_LABELS
+    valid_labels.include?(label)
+  end
+
+  # Reads all the md files from the `explanations` dir and will build
+  # a hash where the label is the key and the file contents the value.
+  #
+  # @return [Hash] the explanation hash with labels as key
+  def explanations
+    paths = Dir.glob(File.join(File.dirname(__FILE__), "explanations/*.md"))
+
+    explanation_hash = {}
+
+    paths.each do |path|
+      pn = Pathname.new(path)
+      key = pn.basename(".*").to_s.to_sym
+      explanation_hash[key] = pn.read
+    end
+    explanation_hash
+  end
+
+
   # Removes all invalid labels from the issue
   #
   # @param repo [String] The repository in "user/repo" format. ie 'spree/spree'
@@ -21,7 +45,7 @@ class Github
   def remove_invalid_labels(repo, issue_id)
     labels = client.labels_for_issue(repo, issue_id)
     labels.each do |label|
-      unless VALID_LABELS.include?(label.name)
+      unless label_is_valid?(label.name)
         client.remove_label(repo, issue_id, label.name)
         client.delete_label!(repo, label.name)
       end
@@ -47,7 +71,7 @@ class Github
   # @param label [String] The label to be applied to the issue
   #
   def close_and_label_issue(repo, issue, login, label)
-    if CORE_USERS.include?(login) && VALID_LABELS.include?(label)
+    if CORE_USERS.include?(login) && label_is_valid?(label)
       client.add_labels_to_an_issue(repo, issue, [label])
       client.close_issue(repo, issue)
     end

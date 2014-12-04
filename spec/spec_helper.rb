@@ -4,7 +4,7 @@ require File.expand_path("../../app", __FILE__)
 
 require 'rspec'
 require 'rack/test'
-
+require 'pry'
 
 RSpec.configure do |config|
   config.color = true
