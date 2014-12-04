@@ -48,7 +48,7 @@ class Spreebot < Sinatra::Base
       # check for triage comments
       if comment_body.start_with?('triage:')
         label = comment_body.gsub('triage:', '').strip
-        @gh.create_issue_label(repo_name, issue_number, label) if action == 'reopened'
+        @gh.create_issue_label(repo_name, issue_number, label)
         @gh.remove_issue_label(repo_name, issue_number, 'unverified') if label == 'verified'
       end
 
