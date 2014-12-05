@@ -121,7 +121,7 @@ class Github
       l[:name] == label
     end.empty?
 
-    client.remove_label(repo, issue, label)
+    client.remove_label(repo, issue_id, label)
   end
 
   # Add a comment to the issue if an entry exists in the explanations hash
