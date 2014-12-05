@@ -3,7 +3,7 @@ require 'octokit'
 class Github
 
   VALID_LABELS = %w(unverified verified failing reopened)
-  CORE_USERS = %w(schof jdutil huoxito peterberkenbosch rlister)
+  CORE_USERS = %w(schof jdutil huoxito peterberkenbosch rlister bryanmtl)
   EXPLANATION_LABELS = %w(expected_behavior feature_request not_a_bug stalled steps version works_for_me)
 
   CI_FAILED_LABEL = 'failing'
