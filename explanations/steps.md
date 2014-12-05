@@ -1,1 +1,1 @@
-We need steps to reproduce this.
+You need to provide a detailed set of steps to reproduce the problem. It should be possible for another developer to reproduce the problem on using a clean install of (no extensions or customizations) if they follow your steps and use the Spree version specified.
