@@ -74,7 +74,7 @@ class Github
     if CORE_USERS.include?(login) && label_is_valid?(label)
       client.add_labels_to_an_issue(repo, issue_id, [label])
       client.close_issue(repo, issue_id)
-      add_comment_to_issue(repo, issue_id, label) if label_is_valid?(label)
+      add_comment_to_issue(repo, issue_id, label) if EXPLANATION_LABELS.include?(label)
     end
   end
 
