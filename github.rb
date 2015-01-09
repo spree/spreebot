@@ -71,6 +71,9 @@ class Github
   # @param label [String] The label to be applied to the issue
   #
   def close_and_label_issue(repo, issue_id, login, label)
+
+    add_comment_to_issue(repo, issue_id, "not_authorized") unless CORE_USERS.include?(login)
+
     if CORE_USERS.include?(login) && label_is_valid?(label)
       client.add_labels_to_an_issue(repo, issue_id, [label])
       client.close_issue(repo, issue_id)
