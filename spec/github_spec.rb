@@ -29,8 +29,7 @@ describe Github do
   end
   context ".explanations" do
     it "reads the files from the explanations directory" do
-      explanation_hash = {:expected_behavior=>"This is expected behaviour, as we describe [here](http://github.com/spree/spree)\n"}
-      expect(client.explanations).to eql explanation_hash
+      expect(client.explanations[:expected_behavior]).to eq File.read(File.join(File.dirname(__FILE__), '../explanations/expected_behavior.md'))
     end
   end
 end
