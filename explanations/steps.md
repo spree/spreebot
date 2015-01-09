@@ -1,3 +1,3 @@
-You need to provide a detailed set of steps to reproduce the problem. It should be possible for another developer to reproduce the problem on using a clean install of (no extensions or customizations) if they follow your steps and use the Spree version specified.
+You need to provide a detailed set of steps to reproduce the problem. It should be possible for another developer to reproduce the problem using a clean install (no extensions or customizations) if they follow your steps and use the Spree version specified.
 
-DON'T get discouraged if your issue is closed, Spree is a busy project and is getting lots of issues so we need your help make sure every issue contains everything needed. See our [contributing guidelines](http://dev.spreecommerce.com/contributing/) for more information.
+Don't get discouraged that your issue has been closed, Spree is a busy project and gets a lot of issues so we need your help to make sure this issue contains all the information required. Please review [our guidelines](http://dev.spreecommerce.com/issues#reporting-requirements) on how to submit all the information needed when you submit an issue.

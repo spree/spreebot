@@ -1,3 +1,3 @@
-Please describe the behavior you are expecting that is the reason for opening this issue. That way we can try to reproduce it and come up with a fix for it as well.
+In additon to describing the observed behavior you need to describe how this differes from what you expect the behavior to be. Providing this information helps save us time when trying to reproduce your problem.
 
-DON'T get discouraged if your issue is closed, Spree is a busy project and is getting lots of issues so we need your help make sure every issue contains everything needed. See our [contributing guidelines](http://dev.spreecommerce.com/contributing/) for more information.
+Don't get discouraged that your issue has been closed, Spree is a busy project and gets a lot of issues so we need your help to make sure this issue contains all the information required. Please review [our guidelines](http://dev.spreecommerce.com/issues#reporting-requirements) on how to submit an issue.

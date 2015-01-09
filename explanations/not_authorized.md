@@ -1,1 +1,1 @@
-Cannot execute the command in the commit provided, you are not an authorized moderator.
+Cannot execute the command in the comment provided, you are not an authorized moderator. If you would like to become a moderator contact us via the [mailing list](https://groups.google.com/forum/#!forum/spree-user).

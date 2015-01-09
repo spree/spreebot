@@ -1,3 +1,3 @@
-We cannot reproduce this problem
+We could not reproduce this issue on a clean install.
 
-DON'T get discouraged if your issue is closed, Spree is a busy project and is getting lots of issues so we need your help make sure every issue contains everything needed. See our [contributing guidelines](http://dev.spreecommerce.com/contributing/) for more information.
+Don't get discouraged that your issue has been closed, Spree is a busy project and gets a lot of issues. Please reopen this issue with more information on how to reproduce this.
