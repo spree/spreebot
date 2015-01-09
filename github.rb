@@ -3,7 +3,7 @@ require 'octokit'
 class Github
 
   VALID_LABELS = %w(unverified verified failing reopened)
-  CORE_USERS = %w(BDQ schof jdutil huoxito peterberkenbosch rlister bryanmtl gmacdougall cbrunsdon jhawthorn adammathys seantaylor Senjai futhr athal7 jordan-brough)
+  CORE_USERS = %w(BDQ schof JDutil huoxito peterberkenbosch rlister bryanmtl gmacdougall cbrunsdon jhawthorn adammathys seantaylor Senjai futhr athal7 jordan-brough)
   EXPLANATION_LABELS = %w(expected_behavior feature_request not_a_bug stalled steps version works_for_me)
 
   CI_FAILED_LABEL = 'failing'
@@ -56,7 +56,7 @@ class Github
 
     msg = "You attempted to add an unsupported label, we only use the following labels: #{VALID_LABELS.join(", ")}"
     client.add_comment(repo, issue_id, msg) unless invalid_labels.empty?
-    
+
   end
 
   # Add the label 'unverified' to the specified issue
