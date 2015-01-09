@@ -44,12 +44,19 @@ class Github
   #
   def remove_invalid_labels(repo, issue_id)
     labels = client.labels_for_issue(repo, issue_id)
+    invalid_labels = []
     labels.each do |label|
       unless label_is_valid?(label.name)
         client.remove_label(repo, issue_id, label.name)
         client.delete_label!(repo, label.name)
+        invalid_labels << label.name
       end
     end
+
+
+    msg = "You attempted to add an unsupported label, we only use the following labels: #{VALID_LABELS.join(", ")}"
+    client.add_comment(repo, issue_id, msg) unless invalid_labels.empty?
+    
   end
 
   # Add the label 'unverified' to the specified issue
