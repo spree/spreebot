@@ -2,7 +2,7 @@ require 'octokit'
 
 class Github
 
-  VALID_LABELS = %w(unverified verified failing reopened)
+  VALID_LABELS = %w(unverified verified failing reopened address_feedback need_specs discussion)
   CORE_USERS = %w(BDQ schof JDutil huoxito peterberkenbosch rlister bryanmtl gmacdougall cbrunsdon jhawthorn adammathys seantaylor Senjai futhr athal7 jordan-brough)
   EXPLANATION_LABELS = %w(expected_behavior feature_request not_a_bug stalled steps version works_for_me)
 

@@ -1,0 +1,1 @@
+This change needs some more discussion and input from other users and contributors, please send an email to the [mailing list](https://groups.google.com/forum/#!forum/spree-user) to get the discussion started.
