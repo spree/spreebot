@@ -40,18 +40,18 @@ class Spreebot < Sinatra::Base
       comment_user = payload['comment']['user']['login']
 
       # check for rejection comments
-      if(label = CommentHelper.parse_body("reject"))
+      if(label = CommentHelper.parse_body(comment_body,"reject"))
         @gh.close_and_label_issue(repo_name, issue_number, comment_user, label)
       end
 
       # check for triage comments
-      if(label = CommentHelper.parse_body("triage"))
+      if(label = CommentHelper.parse_body(comment_body,"triage"))
         @gh.create_issue_label(repo_name, issue_number, label)
         @gh.remove_issue_label(repo_name, issue_number, 'unverified') if label == 'verified'
       end
 
       # check for close comments
-      if(label = CommentHelper.parse_body("close"))
+      if(label = CommentHelper.parse_body(comment_body,"close"))
         @gh.close_and_label_issue(repo_name, issue_number, comment_user, label)
         @gh.remove_issue_label(repo_name, issue_number, 'unverified')
       end
