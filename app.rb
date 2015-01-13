@@ -4,6 +4,7 @@ require 'json'
 require 'httparty'
 require 'active_support/core_ext/hash/indifferent_access'
 require File.expand_path("../github", __FILE__)
+require File.expand_path("../comment_helper", __FILE__)
 
 class Spreebot < Sinatra::Base
   attr_reader :payload
@@ -39,21 +40,18 @@ class Spreebot < Sinatra::Base
       comment_user = payload['comment']['user']['login']
 
       # check for rejection comments
-      if comment_body.start_with?('reject:')
-        label = comment_body.gsub('reject:', '').strip
+      if(label = CommentHelper.parse_body("reject"))
         @gh.close_and_label_issue(repo_name, issue_number, comment_user, label)
       end
 
       # check for triage comments
-      if comment_body.start_with?('triage:')
-        label = comment_body.gsub('triage:', '').strip
+      if(label = CommentHelper.parse_body("triage"))
         @gh.create_issue_label(repo_name, issue_number, label)
         @gh.remove_issue_label(repo_name, issue_number, 'unverified') if label == 'verified'
       end
 
       # check for close comments
-      if comment_body.start_with?('close:')
-        label = comment_body.gsub('close:', '').strip
+      if(label = CommentHelper.parse_body("close"))
         @gh.close_and_label_issue(repo_name, issue_number, comment_user, label)
         @gh.remove_issue_label(repo_name, issue_number, 'unverified')
       end
