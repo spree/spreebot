@@ -2,9 +2,9 @@ require 'octokit'
 
 class Github
 
-  VALID_LABELS = %w(unverified verified failing reopened address_feedback need_specs discussion)
+  VALID_LABELS = %w(unverified verified failing reopened address_feedback need_specs discussion security)
   CORE_USERS = %w(BDQ schof JDutil huoxito peterberkenbosch rlister bryanmtl gmacdougall cbrunsdon jhawthorn adammathys seantaylor Senjai futhr athal7 jordan-brough)
-  EXPLANATION_LABELS = %w(expected_behavior feature_request not_a_bug stalled steps version works_for_me)
+  EXPLANATION_LABELS = %w(expected_behavior feature_request not_a_bug stalled steps version works_for_me security)
 
   CI_FAILED_LABEL = 'failing'
   PR_OPEN_STATE = 'open'
@@ -53,10 +53,8 @@ class Github
       end
     end
 
-
     msg = "You attempted to add an unsupported label, we only use the following labels: #{VALID_LABELS.join(", ")}"
     client.add_comment(repo, issue_id, msg) unless invalid_labels.empty?
-
   end
 
   # Add the label 'unverified' to the specified issue
@@ -144,5 +142,11 @@ class Github
     if explanations.has_key?(label.to_sym)
       client.add_comment(repo, issue_id, explanations[label.to_sym])
     end
+  end
+
+  def redact_and_email_security_issue(repo, issue)
+    issue = client.issue(repo, issue)
+    original_body = issue.body
+    client.update_issue(repo, issue, '[redacted]', explanations[:security], {labels: 'security'})
   end
 end

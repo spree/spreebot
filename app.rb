@@ -46,8 +46,12 @@ class Spreebot < Sinatra::Base
 
       # check for triage comments
       if(label = CommentHelper.parse_body(comment_body,"triage"))
-        @gh.create_issue_label(repo_name, issue_number, label)
-        @gh.remove_issue_label(repo_name, issue_number, 'unverified') if label == 'verified'
+        if label == "security"
+          @gh.redact_and_email_security_issue(repo_name, issue_number)
+        else
+          @gh.create_issue_label(repo_name, issue_number, label)
+          @gh.remove_issue_label(repo_name, issue_number, 'unverified') if label == 'verified'
+        end
       end
 
       # check for close comments
