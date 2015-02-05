@@ -1,4 +1,5 @@
 require 'octokit'
+require 'pony'
 
 class Github
 
@@ -146,9 +147,30 @@ class Github
 
   def redact_and_email_security_issue(repo, issue_id)
     issue = client.issue(repo, issue_id)
-    original_body = issue.body
-    user = issue.user
-    # todo email body
+    title = issue.title
+    body = issue.body
+    submitted_by = issue.user
     client.update_issue(repo, issue_id, '[redacted]', explanations[:security])
+    #send_security_email(repo, issue_id, title, body, submitted_by)
   end
+
+  def send_security_email(repo, issue_id, title, body, submitted_by)
+    submitted_by_email = submitted_by.email
+    Pony.mail to: 'security@spreecommerce.com',
+      from: 'dontreply@spreecommerce.com',
+      cc: submitted_by_email if submitted_by_email
+      subject: "#{issue_id} - #{title} by #{submitted_by.login}",
+      html_body: body,
+      via: :smtp,
+      via_options: {
+        address: 'smtp.mandrillapp.com',
+        port:    '587',
+        user_name: ENV['MANDRILL_USERNAME'],
+        password: ENV['MANDRILL_APIKEY'],
+        authentication: :plain, # :plain, :login, :cram_md5, no auth by default
+        domain: "spreebot.herokuapp.com"
+      }
+    end
+  end
+
 end

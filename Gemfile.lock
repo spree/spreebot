@@ -20,12 +20,17 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (0.6.11)
     json (1.8.1)
+    mail (2.6.3)
+      mime-types (>= 1.16, < 3)
     method_source (0.8.2)
+    mime-types (2.4.3)
     minitest (5.4.3)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     octokit (3.6.1)
       sawyer (~> 0.6.0, >= 0.5.3)
+    pony (1.11)
+      mail (>= 2.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -81,6 +86,7 @@ DEPENDENCIES
   activesupport
   httparty
   octokit (~> 3.6.1)
+  pony
   pry-meta
   rack-test
   rspec

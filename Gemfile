@@ -8,6 +8,7 @@ gem 'activesupport'
 gem 'thin'
 
 gem 'octokit', '~> 3.6.1'
+gem 'pony'
 
 group :development do
 end
