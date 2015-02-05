@@ -160,7 +160,7 @@ class Github
       to: 'security@spreecommerce.com',
       from: 'dontreply@spreecommerce.com',
       cc: submitted_by_email,
-      subject: "#{issue_id} - #{title} by #{submitted_by.login}",
+      subject: "#{repo} - ##{issue_id} - #{title} by #{submitted_by.login}",
       html_body: body,
       via: :smtp,
       via_options: {
