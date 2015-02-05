@@ -158,7 +158,7 @@ class Github
     submitted_by_email = submitted_by.email
     Pony.mail to: 'security@spreecommerce.com',
       from: 'dontreply@spreecommerce.com',
-      cc: submitted_by_email if submitted_by_email
+      cc: submitted_by_email,
       subject: "#{issue_id} - #{title} by #{submitted_by.login}",
       html_body: body,
       via: :smtp,
