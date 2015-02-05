@@ -156,7 +156,8 @@ class Github
 
   def send_security_email(repo, issue_id, title, body, submitted_by)
     submitted_by_email = submitted_by.email
-    Pony.mail to: 'security@spreecommerce.com',
+    Pony.mail(
+      to: 'security@spreecommerce.com',
       from: 'dontreply@spreecommerce.com',
       cc: submitted_by_email,
       subject: "#{issue_id} - #{title} by #{submitted_by.login}",
@@ -170,7 +171,7 @@ class Github
         authentication: :plain, # :plain, :login, :cram_md5, no auth by default
         domain: "spreebot.herokuapp.com"
       }
-    end
+    )
   end
 
 end
