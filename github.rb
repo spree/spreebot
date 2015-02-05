@@ -144,9 +144,11 @@ class Github
     end
   end
 
-  def redact_and_email_security_issue(repo, issue)
-    issue = client.issue(repo, issue)
+  def redact_and_email_security_issue(repo, issue_id)
+    issue = client.issue(repo, issue_id)
     original_body = issue.body
-    client.update_issue(repo, issue, '[redacted]', explanations[:security], {labels: 'security'})
+    user = issue.user
+    # todo email body
+    client.update_issue(repo, issue_id, '[redacted]', explanations[:security])
   end
 end
