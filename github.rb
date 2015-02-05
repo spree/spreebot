@@ -151,7 +151,7 @@ class Github
     body = issue.body
     submitted_by = issue.user
     client.update_issue(repo, issue_id, '[redacted]', explanations[:security])
-    #send_security_email(repo, issue_id, title, body, submitted_by)
+    send_security_email(repo, issue_id, title, body, submitted_by)
   end
 
   def send_security_email(repo, issue_id, title, body, submitted_by)
