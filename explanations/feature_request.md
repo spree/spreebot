@@ -1,3 +1,3 @@
-We’re interested in hearing your ideas for new features. If you want to suggest a feature, please use the [mailing list](https://groups.google.com/forum/#!forum/spree-user).
+We’re interested in hearing your ideas for new features. If you want to suggest a feature, please use the [Spree RFCs Repo](https://github.com/spree-contrib/rfcs) or if you don't want to do that use the [mailing list](https://groups.google.com/forum/#!forum/spree-user) to discuss it.  The proper place to get your feature accepted will be through the RFC process though. So don't plan on any action other than discussion to come from the mailing list.
 
 Feature requests without accompanying code will be closed immediately. We simply cannot respond efficiently to feature requests through our Issue Tracker.
