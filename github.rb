@@ -4,7 +4,7 @@ require 'pony'
 class Github
 
   VALID_LABELS = %w(unverified verified failing reopened address_feedback need_specs discussion security)
-  CORE_USERS = %w(BDQ schof JDutil huoxito peterberkenbosch rlister bryanmtl gmacdougall cbrunsdon jhawthorn adammathys seantaylor Senjai futhr athal7 jordan-brough BenMorganIO)
+  CORE_USERS = %w(BDQ schof JDutil huoxito peterberkenbosch rlister bryanmtl gmacdougall cbrunsdon jhawthorn adammathys seantaylor Senjai futhr athal7 jordan-brough BenMorganIO mbj dkubb)
   EXPLANATION_LABELS = %w(expected_behavior feature_request not_a_bug question stalled steps version works_for_me security)
 
   CI_FAILED_LABEL = 'failing'
